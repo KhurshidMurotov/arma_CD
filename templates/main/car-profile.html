@@ -1,0 +1,554 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fill-btn.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sliders.css' %}">
+    <link rel="stylesheet" href="{% static 'css/car-profile.css' %}">
+    <title>{{company.name}}</title>
+</head>
+<body>
+
+    <!-- Start Wrapper -->
+    <div class="wrapper">
+        
+        <!-- Start Profile Section -->
+        <section class="full-height profile-section remove-on-mobile">
+            <div class="profile-section__main">
+                <div class="profile-section__main-side">
+                    <div class="profile-section__header">
+                        <a href="#" onclick="history.back()" class="profile-section__back-btn">
+                            <img src="{% static 'img/back arrow left.svg' %}" alt="">
+                        </a>
+                    </div>
+                    <div class="profile-section__main-side-top">
+                        <div class="profile-section__main-side-subtitle">
+                            Модель
+                        </div>
+                        <div class="profile-section__main-side-title">
+                            {{car.name}}
+                        </div>
+                        <div class="profile-section__main-side-detail">
+                            год выпуска {{car.manufacture_year}}
+                        </div>
+                        <div class="profile-section__main-side-detail">
+                            цена {{car.formatted_price}} $
+                        </div>
+                    </div>
+                    <div class="profile-section__main-side-devider">
+
+                    </div>
+                    <div class="profile-section__main-side-bottom">
+                        <div class="profile-section__main-side-detail bold">
+                            Комплектация
+                        </div>
+                        {% for item in car.equipments.all %}
+                        <span class="profile-section__main-side-btn {% if forloop.first %}active{% endif %}">
+                            {{item}}
+                        </span>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="profile-section__main-body">
+                    <div class="profile-section__main-body-image">
+                        <img src="{{car.first_image.image.url}}" alt="">
+                    </div>
+                    <div class="profile-section__main-body-btn dark fill-btn">
+                        <span class="fill-btn__text">
+                            Заказать
+                            &nbsp;
+                            <i class="fa-solid fa-angle-right"></i>
+                        </span>
+                        <div class="fill-btn__area"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-section__footer">
+                <div class="profile-section__footer-col">
+                    <div class="profile-section__footer-row bold">
+                        Тип двигателя
+                    </div>
+                    <div class="profile-section__footer-row">
+                        <img src="{{car.engine_type.image.url}}" alt="">
+                        {{car.engine_type}}
+                    </div>
+                </div>
+                <div class="profile-section__footer-col">
+                    <div class="profile-section__footer-row bold">
+                        Запас хода
+                    </div>
+                    <div class="profile-section__footer-row">
+                        {{car.power_reserver_from}} км - {{car.power_reserver_to}} км
+                    </div>
+                </div>
+                <div class="profile-section__footer-col">
+                    <div class="profile-section__footer-row bold">
+                        Разгон до 100 км/ч
+                    </div>
+                    <div class="profile-section__footer-row">
+                        {{car.acceleration}} сек
+                    </div>
+                </div>
+                <div class="profile-section__footer-col">
+                    <div class="profile-section__footer-row bold">
+                        Доступные цвета
+                    </div>
+                    <div class="profile-section__footer-row color-list">
+                        {% for item in car.car_color_set.all %}
+                        <div class="profile-section__color-item">
+                            <div style="background-color: {{item.color_1}};"></div>
+                            <div style="background-color: {{item.color_2}};"></div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="profile-section__footer-col">
+                    <div class="profile-section__footer-row">
+                        <a href="#">
+                            Смотреть дальше
+                            <span class="circle-icon">
+                                <i class="fa-solid fa-angle-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Profile Section -->
+
+        <!-- Start Mobile Profile Section -->
+        <section class="mobile-profile-section remove-on-pk">
+            <div class="mobile-profile-section__header">
+                <a href="#" onclick="history.back()" class="mobile-profile-section__back-btn">
+                    <img src="{% static 'img/back arrow left.svg' %}" alt="">
+                </a>
+                <div class="mobile-profile-section__brand-logo">
+                    <img src="{% static 'img/car-logos/xpeng.png' %}" alt="">
+                </div>
+            </div>
+            <div class="mobile-profile-section__info">
+                <div class="mobile-profile-section__title">
+                    {{car.name}}
+                </div>
+                <div class="mobile-profile-section__subtitle">
+                    год выпуска {{car.manufacture_year}}
+                </div>
+                <div class="mobile-profile-section__subtitle">
+                    цена {{car.formatted_price}} $
+                </div>
+            </div>
+            <div class="mobile-profile-section__slider">
+                <div class="image-slider swiper-container">
+                    <div class="image-slider__wrapper swiper-wrapper">
+                
+                        {% for item in car.main_images.all %}
+                        <div data-hash="slide-1" class="image-slider__slide swiper-slide">
+                            <div class="image-slider__image swiper-zoom-container">
+                                <img src="{{item.image.url}}" alt="">
+                            </div>
+                        </div>
+                        {% endfor %}
+                
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-profile-section__btns">
+                <div class="mobile-profile-section__btn car-slider-left margin-right">
+                    <img src="{% static 'img/back arrow left.svg' %}" alt="">
+                </div>
+                <div class="mobile-profile-section__btn car-slider-right">
+                    <img src="{% static 'img/back arrow left.svg' %}" alt="" style="transform: rotate(180deg);">
+                </div>
+            </div>
+            <div class="mobile-profile-section__equipments">
+                <div class="mobile-profile-section__equipments-title">
+                    Комплектации
+                </div>
+                <div class="mobile-profile-section__equipments-btns">
+                    <div class="equipment-slider swiper-container">
+                        <div class="equipment-slider__wrapper swiper-wrapper">
+                    
+                            {% for item in car.equipments.all %}
+                            <div data-hash="equipment-{{item.id}}" class="equipment-slider__slide swiper-slide">
+                                <div class="mobile-profile-section__equipment block-equipment-{{item.id}} {% if forloop.first %}active{% endif %}">
+                                    {{item}}
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-profile-section__colors">
+                <div class="mobile-profile-section__colors-title">
+                    Цвет
+                </div>
+                <div class="mobile-profile-section__colors-box">
+                    {% for item in car.car_color_set.all %}
+                    <div class="mobile-profile-section__color-item">
+                        <div style="background-color: {{item.color_1}};"></div>
+                        <div style="background-color: {{item.color_2}};"></div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="mobile-profile-section__details">
+                <div class="mobile-profile-section__detail-row">
+                    <span>
+                        Запас хода
+                    </span>&nbsp;
+                    {{car.power_reserver_from}} км - {{car.power_reserver_to}} км
+                </div>
+                <div class="mobile-profile-section__detail-row">
+                    <span>
+                        Тип двигателя
+                    </span>&nbsp;
+                    {{car.engine_type}}
+                </div>
+                <div class="mobile-profile-section__detail-row">
+                    <span>
+                        Разгон до 100 км\ч
+                    </span>&nbsp;
+                    {{car.acceleration}} сек
+                </div>
+            </div>
+            <div class="mobile-profile-section__order">
+                <div class="mobile-profile-section__order-btn dark fill-btn">
+                    <span class="fill-btn__text">
+                        Заказать
+                        &nbsp;
+                        <i class="fa-solid fa-angle-right"></i>
+                    </span>
+                    <div class="fill-btn__area"></div>
+                </div>
+            </div>
+        </section>
+        <!-- End Mobile Profile Section -->
+
+        <!-- Start Gallery Section -->
+        <section class="gallery-section">
+            {% for item in car.two_inner_images %}
+            <div class="gallery-section__image-item">
+                <img src="{{item.image.url}}" alt="">
+            </div>
+            {% endfor %}
+        </section>
+        <!-- End Gallery Section -->
+
+        <!-- Start Details Section -->
+        <section class="details-section remove-on-mobile">
+            <div class="details-section__header">
+                Подробные характеристики
+            </div>
+            <div class="details-section__details-box">
+                <div class="details-section__detail-item">
+                    <div class="details-section__icon-col first">
+                        <div class="icon-image">
+                            <img src="{% static 'img/maximize.png' %}" alt="">
+                        </div>
+                        <div class="icon-text">
+                            Размеры кузова
+                        </div>
+                    </div>
+                    <div class="details-section__text-col second list">
+                        <div class="col-row">
+                            Длина - {{car.length}}
+                        </div>
+                        <div class="col-row">
+                            Ширина - {{car.width}}
+                        </div>
+                        <div class="col-row">
+                            Высота - {{car.height}}
+                        </div>
+                    </div>
+                </div>
+                <div class="details-section__detail-item">
+                    <div class="details-section__icon-col first">
+                        <div class="icon-image">
+                            <img src="{% static 'img/car-seat.png' %}" alt="">
+                        </div>
+                        <div class="icon-text">
+                            Кол-во мест
+                        </div>
+                    </div>
+                    <div class="details-section__text-col second large">
+                        {{car.num_of_places}}
+                    </div>
+                </div>
+                <div class="details-section__detail-item">
+                    <div class="details-section__icon-col first">
+                        <div class="icon-image">
+                            <img src="{% static 'img/deadline.png' %}" alt="">
+                        </div>
+                        <div class="icon-text">
+                            Макс. скорость
+                        </div>
+                    </div>
+                    <div class="details-section__text-col second middle">
+                        {{car.max_speed}} км\ч
+                    </div>
+                </div>
+                <div class="details-section__detail-item">
+                    <div class="details-section__icon-col first">
+                        <div class="icon-image">
+                            <img src="{% static 'img/chassis-2.png' %}" alt="">
+                        </div>
+                        <div class="icon-text">
+                            Привод
+                        </div>
+                    </div>
+                    <div class="details-section__text-col second">
+                        {{car.drive_unit}}
+                    </div>
+                </div>
+                <div class="details-section__detail-item">
+                    <div class="details-section__icon-col first">
+                        <div class="icon-image">
+                            <img src="{% static 'img/battery.png' %}" alt="">
+                        </div>
+                        <div class="icon-text">
+                            Емкость аккумулятора
+                        </div>
+                    </div>
+                    <div class="details-section__text-col second middle">
+                        {{car.battery_capacity}} кв
+                    </div>
+                </div>
+                <div class="details-section__detail-item">
+                    <div class="details-section__icon-col first">
+                        <div class="icon-image">
+                            <img src="{% static 'img/fast-charge.png' %}" alt="">
+                        </div>
+                        <div class="icon-text">
+                            Скорость зарядки
+                        </div>
+                    </div>
+                    <div class="details-section__text-col second middle">
+                        {{car.charging_speed}} 
+                        {% if car.speed_in == 'minutes' %}
+                        мин
+                        {% elif car.speed_in == 'hours' %}
+                        часа
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Details Section -->
+
+        <!-- Start Mobile Details Section -->
+        <section class="mobile-details-section remove-on-pk">
+            <div class="mobile-details-section__box">
+                <div class="mobile-details-section__detail-item">
+                    <div class="mobile-details-section__icon">
+                        <img src="{% static 'img/maximize.png' %}" alt="">
+                    </div>
+                    <div class="mobile-details-section__text">
+                        <div class="mobile-details-section__title">
+                            Размеры кузова
+                        </div>
+                        <div class="mobile-details-section__subtitle list">
+                            <div class="col-row">
+                                Длина - {{car.length}}
+                            </div>
+                            <div class="col-row">
+                                Ширина - {{car.width}}
+                            </div>
+                            <div class="col-row">
+                                Высота - {{car.height}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-details-section__detail-item">
+                    <div class="mobile-details-section__icon">
+                        <img src="{% static 'img/car-seat.png' %}" alt="">
+                    </div>
+                    <div class="mobile-details-section__text">
+                        <div class="mobile-details-section__title">
+                            Кол-во мест
+                        </div>
+                        <div class="mobile-details-section__subtitle large">
+                            {{car.num_of_places}}
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-details-section__detail-item">
+                    <div class="mobile-details-section__icon">
+                        <img src="{% static 'img/deadline.png' %}" alt="">
+                    </div>
+                    <div class="mobile-details-section__text">
+                        <div class="mobile-details-section__title">
+                            Макс. скорость
+                        </div>
+                        <div class="mobile-details-section__subtitle large">
+                            {{car.max_speed}} км\ч
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-details-section__detail-item">
+                    <div class="mobile-details-section__icon">
+                        <img src="{% static 'img/chassis-2.png' %}" alt="">
+                    </div>
+                    <div class="mobile-details-section__text">
+                        <div class="mobile-details-section__title">
+                            Привод
+                        </div>
+                        <div class="mobile-details-section__subtitle">
+                            {{car.drive_unit}}
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-details-section__detail-item no-bottom-border">
+                    <div class="mobile-details-section__icon">
+                        <img src="{% static 'img/battery.png' %}" alt="">
+                    </div>
+                    <div class="mobile-details-section__text">
+                        <div class="mobile-details-section__title">
+                            Емкость аккумулятора
+                        </div>
+                        <div class="mobile-details-section__subtitle large">
+                            {{car.battery_capacity}} кв
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-details-section__detail-item">
+                    <div class="mobile-details-section__icon">
+                        <img src="{% static 'img/fast-charge.png' %}" alt="">
+                    </div>
+                    <div class="mobile-details-section__text">
+                        <div class="mobile-details-section__title">
+                            Скорость зарядки
+                        </div>
+                        <div class="mobile-details-section__subtitle large">
+                            {{car.charging_speed}} 
+                            {% if car.speed_in == 'minutes' %}
+                            мин
+                            {% elif car.speed_in == 'hours' %}
+                            часа
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Mobile Details Section -->
+
+        <!-- Start Poster Section -->
+        <section class="poster-section">
+            <div class="poster-section__image-item">
+                <img src="{{car.sensor_image.image.url}}" alt="">
+            </div>
+            <div class="poster-section__poster-item">
+                <div class="poster-section__poster-title">
+                    Функциональность<br> и надежность
+                </div>
+                <div class="poster-section__poster-subtitle">
+                    {{car.desc_1}}
+                </div>
+                <div class="poster-section__poster-subtitle">
+                    {{car.desc_2}}
+                </div>
+                <div class="poster-section__poster-image">
+                    <img src="{{car.skillet_image.image.url}}" alt="">
+                </div>
+            </div>
+        </section>
+        <!-- End Poster Section -->
+
+        <!-- Start Review section -->
+        <section class="review-section">
+            <div class="review-section__header">
+                Оставить заявку
+            </div>
+            <div class="review-section__content">
+                <form method="post" id="review_form" class="review-section__form">
+                    {% csrf_token %}
+                    <input type="text" name="type" value="new_review" style="display: none;">
+                    <div class="review-section__input-group">
+                        <input type="text" id="review_name" name="name" class="review-section__input" placeholder="Ваше имя">
+                    </div>
+                    <div class="review-section__input-group">
+                        <input type="text" id="review_phone_number" name="phone_number" class="review-section__input"
+                            placeholder="Номер телефона">
+                    </div>
+                    <div class="review-section__input-group">
+                        <input type="time" id="review_time" name="time" class="review-section__input">
+                    </div>
+                    <div class="review-section__submit">
+                        <div class="review-section__btn fill-btn dark submit-review-form">
+                            <span class="fill-btn__text">
+                                Отправить
+                                <i class="fa-solid fa-chevron-right" style="transform: translate(0, 1px);"></i>
+                            </span>
+                            <div class="fill-btn__area"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <!-- End Review section -->
+
+        <!-- Start Footer section -->
+        <section class="footer-section">
+            <div class="footer-section__links">
+                <div class="footer-section__link-row">
+                    <div class="footer-section__link-th">Наш адрес</div>
+                    <div class="footer-section__link-td">{{company.address}}</div>
+                </div>
+                <hr style="border: 1px solid #999;">
+                <div class="footer-section__link-row">
+                    <div class="footer-section__link-th">Режим работы</div>
+                    <div class="footer-section__link-td">{{company.working_time}}</div>
+                </div>
+                <hr style="border: 1px solid #999;">
+                <div class="footer-section__link-row">
+                    <div class="footer-section__link-th">Контакты</div>
+                    <div class="footer-section__link-td">{{company.phone_number}}</div>
+                </div>
+            </div>
+            <div class="footer-section__media">
+                <a href="{{company.instagram}}" class="footer-section__media-block main">
+                    <div class="footer-section__bg">
+                        <img src="{% static 'img/insta square.svg' %}" alt="">
+                    </div>
+                    <div class="footer-section__logo">
+                        <img src="{% static 'img/instagram-2.png' %}" alt="">
+                    </div>
+                </a>
+                <a href="{{company.facebook}}" class="footer-section__media-block">
+                    <div class="footer-section__bg">
+                        <img src="{% static 'img/Facebook square.svg' %}" alt="">
+                    </div>
+                    <div class="footer-section__logo">
+                        <img src="{% static 'img/facebook.png' %}" alt="">
+                    </div>
+                </a>
+                <a href="{{company.telegram}}" class="footer-section__media-block">
+                    <div class="footer-section__bg">
+                        <img src="{% static 'img/Telegram  square.svg' %}" alt="">
+                    </div>
+                    <div class="footer-section__logo">
+                        <img src="{% static 'img/Telegram.png' %}" alt="">
+                    </div>
+                </a>
+            </div>
+        </section>
+        <!-- End Footer section -->
+
+    </div>
+    <!-- End Wrapper -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/fcf5c091af.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="{% static 'js/sliders.js' %}"></script> 
+    <script src="{% static 'js/car-profile.js' %}"></script> 
+</body>
+</html>
