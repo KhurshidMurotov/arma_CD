@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="480" height="452.5" viewBox="0 0 480 452.5">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.781" y1="-0.098" x2="0.35" y2="1.238" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#d43d91"/>
+      <stop offset="1" stop-color="#ff9549"/>
+    </linearGradient>
+  </defs>
+  <rect id="insta_square" data-name="insta square" width="480" height="452.5" fill="url(#linear-gradient)"/>
+</svg>

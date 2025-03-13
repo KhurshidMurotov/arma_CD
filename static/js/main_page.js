@@ -4,20 +4,19 @@ $(document).ready(function() {
         $('#video-popup').addClass('open')
     })
 
-    $('.popup__close').click(function (event){
+    $('.popup__close').click(function (event) {
+        $('#video-popup').removeClass('open')
+    })
+    
+    $('.popup__area').click(function (event) {
         $('#video-popup').removeClass('open')
     })
 
-    $('.popup__area').click(function (event){
-        $('#video-popup').removeClass('open')
-    })
-
-    $('.submit-review-form').click(function (event){
-
-
+    $('.submit-review-form').click(function (event) {
+        
         // Input values
         var review_name = $('#review_name').val()
-        var review_phone_number = $('#review_phone_number').val
+        var review_phone_number = $('#review_phone_number').val()
         var review_model_id = $('#review_model_id').val()
         var review_time = $('#review_time').val()
 
@@ -52,6 +51,7 @@ $(document).ready(function() {
             $('#review_time').addClass('success')
             $('#review_time').removeClass('danger')
         }
+
     })
 
     $('.mobile-banner-section__burger-btn').click(function (event) {
@@ -76,4 +76,3 @@ $(document).ready(function() {
     });
     
 })
-
