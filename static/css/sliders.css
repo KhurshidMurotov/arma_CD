@@ -1,0 +1,131 @@
+.image-slider {
+  overflow: hidden;
+}
+
+.image-slider .swiper-pagination {
+  bottom: -10px;
+}
+
+.image-slider .swiper-pagination-bullet {
+  width: 20px;
+  height: 20px;
+  line-height: 20;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+.image-slider .swiper-pagination-fraction {
+  font-size: 20px;
+  color: #fff;
+}
+
+.image-slider .swiper-pagination-progressbar {
+  top: 0;
+}
+
+.image-slider .swiper-pagination-progressbar-fill {
+  background-color: #7a956b;
+}
+
+.image-slider .swiper-scrollbar-drag {
+  cursor: pointer;
+  background-color: #7a956b;
+}
+
+.image-mini-slider__slide {
+  opacity: 0.2;
+  -webkit-transition: opacity 0.3s ease 0s;
+  transition: opacity 0.3s ease 0s;
+}
+
+.image-mini-slider__slide.swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+.image-mini-slider__image {
+  position: relative;
+  padding: 0px 0px 30% 0px;
+  cursor: pointer;
+}
+
+.image-mini-slider__image img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.equipment-slider .swiper-button-prev::after,
+.equipment-slider .swiper-button-next::after {
+  color: #fff;
+  font-size: 80px;
+}
+
+.equipment-slider .swiper-button-prev {
+  -webkit-transform: translate(10px, 0px);
+          transform: translate(10px, 0px);
+}
+
+.equipment-slider .swiper-button-next {
+  -webkit-transform: translate(-10px, 0px);
+          transform: translate(-10px, 0px);
+}
+
+.equipment-slider .swiper-pagination {
+  bottom: -10px;
+}
+
+.equipment-slider .swiper-pagination-bullet {
+  width: 20px;
+  height: 20px;
+  line-height: 20;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+.equipment-slider .swiper-pagination-fraction {
+  font-size: 20px;
+  color: #fff;
+}
+
+.equipment-slider .swiper-pagination-progressbar {
+  top: 0;
+}
+
+.equipment-slider .swiper-pagination-progressbar-fill {
+  background-color: #7a956b;
+}
+
+.equipment-slider .swiper-scrollbar-drag {
+  cursor: pointer;
+  background-color: #7a956b;
+}
+
+.equipment-mini-slider__slide {
+  opacity: 0.2;
+  -webkit-transition: opacity 0.3s ease 0s;
+  transition: opacity 0.3s ease 0s;
+}
+
+.equipment-mini-slider__slide.swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+.equipment-mini-slider__image {
+  position: relative;
+  padding: 0px 0px 30% 0px;
+  cursor: pointer;
+}
+
+.equipment-mini-slider__image img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}

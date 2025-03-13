@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="480" height="226.5" viewBox="0 0 480 226.5">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.568" y1="-0.175" x2="0.277" y2="1.679" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#217bd5"/>
+      <stop offset="1" stop-color="#1976d2"/>
+    </linearGradient>
+  </defs>
+  <rect id="Facebook_square" data-name="Facebook square" width="480" height="226.5" fill="url(#linear-gradient)"/>
+</svg>
