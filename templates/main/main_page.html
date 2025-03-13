@@ -1,0 +1,529 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fill-btn.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sliders.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main_page.css' %}">
+    <title>{{company.name}}</title>
+</head>
+
+<body>
+
+    <!-- Start Wrapper -->
+    <div class="wrapper">
+
+        <!-- Start Banners section -->
+        <section class="full-height banner-section remove-on-mobile">
+            <div class="grid-container grid-col-3-1-1">
+                <div class="grid-container big-padding">
+                    <div class="image-container w-0">
+                        <img src="{% static 'img/red-car.png' %}" alt="">
+                    </div>
+                    <div class="main__header">
+                        <div class="header__logo">
+                            <img src="{{company.logo.url}}" alt="" class="logo-img">
+                        </div>
+                        <a href="" class="header__link">
+                            О нас
+                        </a>
+                        <a href="" class="header__link">
+                            Контакты
+                        </a>
+                    </div>
+                    <div class="main">
+                        <div class="main__title">
+                            Электрокары <br> мировых брендов
+                        </div>
+                        <div class="main__subtitle">
+                            У нас вы можете приобрести авто любой комплектации<br>
+                            с комфортным салоном и по выгодным ценам
+                        </div>
+                        <a href="{% url 'brands' %}" class="main__btn fill-btn">
+                            <span class="fill-btn__text">
+                                Выбрать модель
+                                &nbsp;
+                                <i class="fa-solid fa-angle-right"></i>
+                            </span>
+                            <div class="fill-btn__area"></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="grid-container grid-row-3-2">
+                    <div class="banner corner-radius">
+                        <div class="image-container">
+                            <img src="{% static 'img/green-car.png' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="banner">
+                        <div class="banner-content dark-bg">
+                            <div class="flex-container p-30-20">
+                                <div class="video-title">
+                                    Видео с новой доставкой авто
+                                </div>
+                                <span class="video-btn play-video">
+                                    <i class="fa fa-play"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="image-container w-0">
+                            <img src="{% static 'img/white-jeep.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-container grid-row-2-3">
+                    <div class="flex-container p-30-20">
+                        <div class="content-top">
+                            <div class="banner-title">
+                                У нас вы можете
+                                приобрести любые
+                                запчасти
+                            </div>
+                            <div class="banner-subtitle">
+                                Кузовные, окна на авто
+                                и аксессуары
+                            </div>
+                        </div>
+                        <a href="" class="content-bottom">
+                            Посмотреть все
+                            &nbsp;
+                            <i class="fa-solid fa-angle-right"></i>
+                        </a>
+                    </div>
+                    <div class="banner radius-top-left">
+                        <div class="image-container">
+                            <img src="{% static 'img/disk.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Banners section -->
+
+        <!-- Start Mobile Banners section -->
+        <section class="full-height mobile-banner-section remove-on-pk"> 
+            <div class="mobile-banner-section__bg">
+                <img src="{% static 'img/red-car.png' %}" alt="">
+            </div>
+            <div class="mobile-banner-section__burger-btn"></div>
+            <div class="mobile-banner-section__sidebar">
+                <a href="{% url 'brands' %}" class="mobile-banner-section__sidebar-link">
+                    Каталог моделей
+                </a>
+                <a href="" class="mobile-banner-section__sidebar-link">
+                    Топ рейтинг авто
+                </a>
+                <a href="" class="mobile-banner-section__sidebar-link">
+                    Купить запчасти
+                </a>
+                <a href="" class="mobile-banner-section__sidebar-link">
+                    О компании
+                </a>
+                <a href="" class="mobile-banner-section__sidebar-link">
+                    Контакты
+                </a>
+            </div>
+            <div class="mobile-banner-section__header">
+                <div class="mobile-banner-section__logo">
+                    <a href="">
+                        <img src="{{company.logo.url}}" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="mobile-banner-section__content">
+                <div class="mobile-banner-section__title">
+                    Электрокары <br> мировых брендов
+                </div>
+                <div class="mobile-banner-section__subtitle">
+                    У нас вы можете приобрести авто<br> любой комплектации<br>
+                    с комфортным салоном<br> и по выгодным ценам
+                </div>
+                <a href="{% url 'brands' %}" class="mobile-banner-section__btn fill-btn">
+                    <span class="fill-btn__text">
+                        Выбрать модель
+                        &nbsp;
+                        <i class="fa-solid fa-angle-right"></i>
+                    </span>
+                    <div class="fill-btn__area"></div>
+                </a>
+            </div>
+        </section>
+        <!-- End Mobile Banners section -->
+
+        <!-- Start Slider section -->
+        <section class="full-height slider-section remove-on-mobile">
+            <div class="slider-section__header">
+                Новые модели
+            </div>
+            <div class="slider-section__content">
+                {% for item in cars %}
+                <div id="slide-{{item.id}}" class="content__data {% if forloop.first %}active{% endif %}">
+                    <div class="data__details">
+                        <div class="data__subtitle">
+                            Модель
+                        </div>
+                        <div class="data__title">
+                            {{item.name}}
+                        </div>
+                        <div class="data__mini">
+                            Год выпуска {{item.manufacture_year}}
+                        </div>
+                        <div class="data__mini">
+                            цена {{item.formatted_price}} $
+                        </div>
+                    </div>
+                    <div class="data__btns">
+                        <div class="data__btn car-slider-left margin-right">
+                            <img src="{% static 'img/back arrow left.svg' %}" alt="">
+                        </div>
+                        <div class="data__btn car-slider-right">
+                            <img src="{% static 'img/back arrow left.svg' %}" alt="" style="transform: rotate(180deg);">
+                        </div>
+                    </div>
+                    <div class="data__table">
+                        <div class="table__tr">
+                            <div class="table__th">
+                                Тип двигателя
+                            </div>
+                            <div class="table__td">
+                                <span class="icon-circle">
+                                    <img src="{{item.engine_type.image.url}}" alt="">
+                                </span>
+                                &nbsp;
+                                {{item.engine_type}}
+                            </div>
+                        </div>
+                        <div class="table__tr">
+                            <div class="table__th">
+                                Разгон до 100 км/ч
+                            </div>
+                            <div class="table__td">
+                                {{item.acceleration}} сек
+                            </div>
+                        </div>
+                        <div class="table__tr">
+                            <div class="table__th ml">
+                                Запас хода
+                            </div>
+                            <div class="table__td ml">
+                                {{item.power_reserver_from}} км - {{item.power_reserver_to}} км
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="content__media">
+                    <div class="image-slider swiper-container">
+                        <div class="image-slider__wrapper swiper-wrapper">
+                    
+                            {% for item in cars %}
+                            <div data-hash="slide-{{item.id}}" class="image-slider__slide swiper-slide" style="display: flex; flex-direction: column; justify-content: space-between;">
+                                <div class="media__image">
+                                    <img src="{{item.first_image.image.url}}" alt="">
+                                </div>
+                                <div class="media__text">
+                                    <a href="{% url 'car-profile' item.id %}">
+                                        Посмотреть авто
+                                        &nbsp;
+                                        <i class="fa-solid fa-angle-right" style="transform: translate(0, 1px);"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            {% endfor %}
+                    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Slider section -->
+
+        <!-- Start Mobile Slider section -->
+        <section class="mobile-slider-section remove-on-pk">
+            <div class="mobile-slider-section__header">
+                Новые модели
+            </div>
+            <div class="mobile-slider-section__content">
+                <div class="image-slider swiper-container">
+                    <div class="image-slider__wrapper swiper-wrapper">
+                
+                        {% for item in cars %}
+                        <div data-hash="slide-{{item.id}}" class="image-slider__slide swiper-slide">
+                            <div class="mobile-slider-section__box">
+                                <div class="mobile-slider-section__details">
+                                    <div class="mobile-slider-section__subtitle">
+                                        Модель
+                                    </div>
+                                    <div class="mobile-slider-section__title">
+                                        {{item.name}}
+                                    </div>
+                                    <div class="mobile-slider-section__mini">
+                                        Год выпуска {{item.manufacture_year}}
+                                    </div>
+                                    <div class="mobile-slider-section__mini">
+                                        цена {{item.formatted_price}} $
+                                    </div>
+                                </div>
+                                <div class="mobile-slider-section__image">
+                                    <img src="{{item.first_image.image.url}}" alt="">
+                                </div>
+                                <div class="mobile-slider-section__table">
+                                    <div class="mobile-slider-section__tr">
+                                        <div class="mobile-slider-section__th">
+                                            Тип двигателя
+                                        </div>
+                                        <div class="mobile-slider-section__td">
+                                            <span class="icon-circle">
+                                                <img src="img/energy.png" alt="">
+                                            </span>
+                                            &nbsp;
+                                            {{item.engine_type}}
+                                        </div>
+                                    </div>
+                                    <div class="mobile-slider-section__tr">
+                                        <div class="mobile-slider-section__th">
+                                            Разгон до 100 км / ч
+                                        </div>
+                                        <div class="mobile-slider-section__td">
+                                            {{item.acceleration}} сек
+                                        </div>
+                                    </div>
+                                    <div class="mobile-slider-section__tr">
+                                        <div class="mobile-slider-section__th">
+                                            Запас хода
+                                        </div>
+                                        <div class="mobile-slider-section__td">
+                                            {{item.power_reserver_from}} км - {{item.power_reserver_to}} км
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+                <div class="mobile-slider-section__btns">
+                    <div class="mobile-slider-section__btn car-slider-left margin-right">
+                        <img src="{% static 'img/back arrow left.svg' %}" alt="">
+                    </div>
+                    <div class="mobile-slider-section__btn car-slider-right">
+                        <img src="{% static 'img/back arrow left.svg' %}" alt="" style="transform: rotate(180deg);">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Mobile Slider section -->
+
+        <!-- Start Logo section -->
+        <section class="logo-section">
+            <div class="logo-section__header">
+                Популярные брэнды авто
+            </div>
+            <div class="logo-section__content">
+                <div class="content__logos">
+                    {% for item in brands %}
+                    <div class="logo__item {{item.zoom_type}}">
+                        <img src="{{item.logo.url}}" alt="">
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="content__link">
+                    <a href="{% url 'brands' %}">
+                        Посмотреть каталог
+                        &nbsp;
+                        <i class="fa-solid fa-angle-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- End Logo section -->
+
+        <!-- Start Advert section -->
+        <section class="advert-section">
+            <div class="advert-section__header">
+                Топ лучших электрокаров
+            </div>
+            <div class="advert-section__banners">
+                {% for item in featured_cars %}
+                <div class="banner__item">
+                    <div class="banner__image">
+                        <img src="{{item.poster_image.image.url}}" alt="">
+                    </div>
+                    <div class="banner__content">
+                        <div class="banner__info">
+                            <div class="banner__title">
+                                {{item.name}}
+                            </div>
+                            <div class="banner__subtitle">
+                                <span>Запас хода</span> {{item.power_reserver_from}} км - {{item.power_reserver_to}} км &nbsp;|&nbsp; <span>Тип двигателя</span> {{item.engine_type}}
+                            </div>
+                        </div>
+                        <div class="banner__link">
+                            <a href="{% url 'car-profile' item.id %}">
+                                Посмотреть модель
+                                &nbsp;
+                                <i class="fa-solid fa-angle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        <!-- End Advert section -->
+
+        <!-- Start Delivery section -->
+        <section class="delivery-section">
+            <div class="delivery-section__header">
+                <div class="delivery-section__title">
+                    arma
+                </div>
+                <div class="delivery-section__subtitle">
+                    electric & hybrid cars
+                </div>
+            </div>
+            <div class="delivery-section__content">
+                <div class="delivery-section__data">
+                    <div class="delivery-data__title">
+                        Доставка авто <br> в любую точку Узбекистана
+                    </div>
+                    <div class="delivery-data__subtitle">
+                        Мы можем доставить ваш электрокар <br> в любой из городов Узбекистана
+                    </div>
+                    <div class="delivery-section__media inner remove-on-pk">
+                        <img src="{% static 'img/car pic.png' %}" alt="">
+                    </div>
+                    <a href="{% url 'brands' %}" class="delivery-data__btn">
+                        Выбрать модель
+                        &nbsp;
+                        <i class="fa-solid fa-angle-right"></i>
+                    </a>
+                </div>
+                <div class="delivery-section__media remove-on-mobile">
+                    <img src="{% static 'img/car pic.png' %}" alt="">
+                </div>
+            </div>
+        </section>
+        <!-- End Delivery section -->
+
+        <!-- Start Review section -->
+        <section class="review-section">
+            <div class="review-section__header">
+                Оставить заявку
+            </div>
+            <div class="review-section__content">
+                <form method="post" id="review_form" class="review-section__form">
+                    {% csrf_token %}
+                    <input type="text" name="type" value="new_review" style="display: none;">
+                    <div class="review-section__input-group">
+                        <input type="text" id="review_name" name="name" class="review-section__input" placeholder="Ваше имя">
+                    </div>
+                    <div class="review-section__input-group">
+                        <input type="text" id="review_phone_number" name="phone_number" class="review-section__input" placeholder="Номер телефона">
+                    </div>
+                    <div class="review-section__input-group double">
+                        <select id="review_model_id" name="model_id" class="review-section__select">
+                            <option value="">Какая модель вас интересует</option>
+                            {% for item in cars %}
+                            <option value="{{item.id}}">{{item.name}}</option>
+                            {% endfor %}
+                        </select>
+                        <input type="time" id="review_time" name="time" class="review-section__input">
+                    </div>
+                    <div class="review-section__submit">
+                        <div class="review-section__btn fill-btn dark submit-review-form">
+                            <span class="fill-btn__text">
+                                Отправить
+                                <i class="fa-solid fa-chevron-right" style="transform: translate(0, 1px);"></i>
+                            </span>
+                            <div class="fill-btn__area"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <!-- End Review section -->
+
+        <!-- Start Footer section -->
+        <section class="footer-section">
+            <div class="footer-section__links">
+                <div class="footer-section__link-row">
+                    <div class="footer-section__link-th">Наш адрес</div>
+                    <div class="footer-section__link-td">{{company.address}}</div>
+                </div>
+                <hr style="border: 1px solid #999;">
+                <div class="footer-section__link-row">
+                    <div class="footer-section__link-th">Режим работы</div>
+                    <div class="footer-section__link-td">{{company.working_time}}</div>
+                </div>
+                <hr style="border: 1px solid #999;">
+                <div class="footer-section__link-row">
+                    <div class="footer-section__link-th">Контакты</div>
+                    <div class="footer-section__link-td">{{company.phone_number}}</div>
+                </div>
+            </div>
+            <div class="footer-section__media">
+                <a href="{{company.instagram}}" class="footer-section__media-block main">
+                    <div class="footer-section__bg">
+                        <img src="{% static 'img/insta square.svg' %}" alt="">
+                    </div>
+                    <div class="footer-section__logo">
+                        <img src="{% static 'img/instagram-2.png' %}" alt="">
+                    </div>
+                </a>
+                <a href="{{company.facebook}}" class="footer-section__media-block">
+                    <div class="footer-section__bg">
+                        <img src="{% static 'img/Facebook square.svg' %}" alt="">
+                    </div>
+                    <div class="footer-section__logo">
+                        <img src="{% static 'img/facebook.png' %}" alt="">
+                    </div>
+                </a>
+                <a href="{{company.telegram}}" class="footer-section__media-block">
+                    <div class="footer-section__bg">
+                        <img src="{% static 'img/Telegram  square.svg' %}" alt="">
+                    </div>
+                    <div class="footer-section__logo">
+                        <img src="{% static 'img/Telegram.png' %}" alt="">
+                    </div>
+                </a>
+            </div>
+        </section>
+        <!-- End Footer section -->
+
+    </div>
+    <!-- End Wrapper -->
+
+    <!-- Start popups -->
+    <div id="video-popup" class="popup simple">
+        <span class="popup__area"></span>
+        <div class="popup__body">
+            <div class="popup__content">
+                <video controls>
+                    {% if company.last_video %}
+                    <source src="{{company.last_video.url}}" type="video/mp4">
+                    {% endif %}
+                </video>
+            </div>
+        </div>
+    </div>
+    <!-- End popups -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/fcf5c091af.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/sliders.js' %}"></script>
+    <script src="{% static 'js/main_page.js' %}"></script>
+</body>
+
+</html>
