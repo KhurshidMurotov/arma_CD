@@ -33,10 +33,10 @@
                         <div class="header__logo">
                             <img src="{{company.logo.url}}" alt="" class="logo-img">
                         </div>
-                        <a href="" class="header__link">
+                        <a href="#foot" class="header__link smooth-scroll">
                             О нас
                         </a>
-                        <a href="" class="header__link">
+                        <a href="#foot" class="header__link smooth-scroll">
                             Контакты
                         </a>
                     </div>
@@ -457,7 +457,7 @@
         <!-- Start Footer section -->
         <section class="footer-section">
             <div class="footer-section__links">
-                <div class="footer-section__link-row">
+                <div class="footer-section__link-row" id = "foot">
                     <div class="footer-section__link-th">Наш адрес</div>
                     <div class="footer-section__link-td">{{company.address}}</div>
                 </div>
@@ -518,7 +518,21 @@
         </div>
     </div>
     <!-- End popups -->
-
+    <script>
+        document.querySelectorAll('a.smooth-scroll').forEach(link => {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const target = document.getElementById(targetId);
+      
+            if (target) {
+              target.scrollIntoView({
+                behavior: 'smooth'
+              });
+            }
+          });
+        });
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/fcf5c091af.js" crossorigin="anonymous"></script>
