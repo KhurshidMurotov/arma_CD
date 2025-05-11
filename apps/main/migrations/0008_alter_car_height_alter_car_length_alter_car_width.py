@@ -13,16 +13,25 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='car',
             name='height',
-            field=models.FloatField(verbose_name='Высота'),
+            field=models.FloatField(
+                verbose_name='Height',
+                help_text='Vehicle height in millimeters'
+            ),
         ),
         migrations.AlterField(
             model_name='car',
             name='length',
-            field=models.FloatField(verbose_name='Длина'),
+            field=models.FloatField(
+                verbose_name='Length', 
+                help_text='Vehicle length in millimeters'
+            ),
         ),
         migrations.AlterField(
             model_name='car',
             name='width',
-            field=models.FloatField(verbose_name='Ширина'),
+            field=models.FloatField(
+                verbose_name='Width',
+                help_text='Vehicle width in millimeters'
+            ),
         ),
     ]

@@ -6,17 +6,25 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('main', '0006_alter_car_power_reserver_to'),
+        ('main', '0006_alter_car_power_reserve_to'),  
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='car_image',
-            options={'ordering': ['car', 'order'], 'verbose_name': 'Фотография машины', 'verbose_name_plural': 'Фотографии машин'},
+            name='CarImage', 
+            options={
+                'ordering': ['car', 'order'],
+                'verbose_name': 'Car Photo',
+                'verbose_name_plural': 'Car Photos'
+            },
         ),
         migrations.AlterField(
-            model_name='brand',
+            model_name='Brand', 
             name='zoom',
-            field=models.FloatField(default=1, verbose_name='Маштаб'),
+            field=models.FloatField(
+                default=1.0,  
+                verbose_name='Zoom Level', 
+                help_text='Zoom scale factor for display purposes' 
+            ),
         ),
     ]

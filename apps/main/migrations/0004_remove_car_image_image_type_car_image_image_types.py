@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
             model_name="car_image",
             name="image_types",
             field=models.ManyToManyField(
-                blank=True, to="extra.image_type", verbose_name="Типы фотографии"
+                blank=True, to="extra.image_type", verbose_name="Image Types"
             ),
         ),
     ]
