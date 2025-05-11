@@ -27,12 +27,12 @@
                     <img src="{% static 'img/back arrow left.svg' %}" alt="">
                 </a>
                 <div class="brands-section__header-title">
-                    Бренды электрокаров
+                    Electric cars brands
                 </div>
             </div>
             <div class="brands-section__dropdown-container">
                 <div class="brands-section__dropdown">
-                    Выберите бренд авто
+                    Choose car brand
                     &nbsp;
                     <i class="fa-solid fa-chevron-down"></i>
                 </div>
@@ -54,7 +54,7 @@
                                 {{item.name}}
                             </div>
                             <div class="car__item-subtitle">
-                                год выпуска {{item.manufacture_year}}
+                                year of issue {{item.manufacture_year}}
                             </div>
                         </div>
                         <div class="car__item-main">
@@ -62,11 +62,11 @@
                         </div>
                         <div class="car__item-footer">
                             <div class="car__item-detail">
-                                | Запас хода {{item.power_reserver_from}} км - {{item.power_reserver_to}} км
+                                | Power reserve {{item.power_reserver_from}} км - {{item.power_reserver_to}} км
                             </div>
                             <div class="car__item-btn">
                                 <a href="{% url 'car-profile' item.id %}">
-                                    Посмотреть
+                                    View
                                     &nbsp;
                                     <i class="fa-solid fa-angle-right" style="transform: translate(0, 1px);"></i>
                                 </a>
