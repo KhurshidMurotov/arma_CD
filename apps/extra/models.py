@@ -1,89 +1,96 @@
 from django.db import models
 
-
-class Engine_type(models.Model):
-
-    status_types = (
-        ('active', 'active'),
-        ('deactive', 'deactive'),
+class EngineType(models.Model):
+    STATUS_ACTIVE = 'active'
+    STATUS_INACTIVE = 'inactive'
+    STATUS_CHOICES = (
+        (STATUS_ACTIVE, 'Active'),
+        (STATUS_INACTIVE, 'Inactive'),
     )
 
-    name = models.CharField("Название", max_length=255)
-    slug_name = models.CharField("Уникальное название", max_length=255)
-    image = models.ImageField("Фотография", upload_to='img/engine_type')
+    name = models.CharField("Name", max_length=255)
+    slug_name = models.CharField("Slug Name", max_length=255, unique=True)
+    image = models.ImageField("Image", upload_to='engine_types/')
 
     class Meta:
-        ordering = ['id',]
-        verbose_name = "Тип двигателя"
-        verbose_name_plural = "Типы двигателей"
+        ordering = ['id']
+        verbose_name = "Engine Type"
+        verbose_name_plural = "Engine Types"
 
     def __str__(self) -> str:
         return self.name
 
 
-class Drive_unit(models.Model):
-
-    status_types = (
-        ('active', 'active'),
-        ('deactive', 'deactive'),
+class DriveUnit(models.Model):
+    STATUS_ACTIVE = 'active'
+    STATUS_INACTIVE = 'inactive'
+    STATUS_CHOICES = (
+        (STATUS_ACTIVE, 'Active'),
+        (STATUS_INACTIVE, 'Inactive'),
     )
 
-    order = models.IntegerField("Очередь", default=0)
-    name = models.CharField("Название", max_length=255)
+    order = models.IntegerField("Order", default=0)
+    name = models.CharField("Name", max_length=255)
 
     class Meta:
-        ordering = ['order',]
-        verbose_name = "Привод"
-        verbose_name_plural = "Приводы"
+        ordering = ['order']
+        verbose_name = "Drive Unit"
+        verbose_name_plural = "Drive Units"
 
     def __str__(self) -> str:
         return self.name
 
 
 class Equipment(models.Model):
-
-    status_types = (
-        ('active', 'active'),
-        ('deactive', 'deactive'),
+    STATUS_ACTIVE = 'active'
+    STATUS_INACTIVE = 'inactive'
+    STATUS_CHOICES = (
+        (STATUS_ACTIVE, 'Active'),
+        (STATUS_INACTIVE, 'Inactive'),
     )
 
-    order = models.IntegerField("Очередь", default=0)
-    name = models.CharField("Название", max_length=255)
-    status = models.CharField("Статус", max_length=255, choices=status_types)
+    order = models.IntegerField("Order", default=0)
+    name = models.CharField("Name", max_length=255)
+    status = models.CharField("Status", max_length=255, choices=STATUS_CHOICES)
 
     class Meta:
-        ordering = ['order',]
-        verbose_name = "Комплектация"
-        verbose_name_plural = "Комплектации"
+        ordering = ['order']
+        verbose_name = "Equipment"
+        verbose_name_plural = "Equipment Packages"
 
     def __str__(self) -> str:
         return self.name
 
 
-class Image_type(models.Model):
-
-    status_types = (
-        ('active', 'active'),
-        ('deactive', 'deactive'),
+class ImageType(models.Model):
+    STATUS_ACTIVE = 'active'
+    STATUS_INACTIVE = 'inactive'
+    STATUS_CHOICES = (
+        (STATUS_ACTIVE, 'Active'),
+        (STATUS_INACTIVE, 'Inactive'),
     )
 
-    slug_names = (
-        ('main_image', 'main_image'),
-        ('poster_image', 'poster_image'),
-        ('inner_image', 'inner_image'),
-        ('sensor_image', 'sensor_image'),
-        ('skillet_image', 'skillet_image'),
+    IMAGE_TYPES = (
+        ('main_image', 'Main Image'),
+        ('poster_image', 'Poster Image'),
+        ('inner_image', 'Inner Image'),
+        ('sensor_image', 'Sensor Image'),
+        ('skillet_image', 'Skillet Image'),
     )
 
-    order = models.IntegerField("Очередь", default=0)
-    name = models.CharField("Название", max_length=255)
-    slug_name = models.CharField("Уникальное название", max_length=255, choices=slug_names, unique=True)
+    order = models.IntegerField("Order", default=0)
+    name = models.CharField("Name", max_length=255)
+    slug_name = models.CharField(
+        "Slug Name", 
+        max_length=255, 
+        choices=IMAGE_TYPES, 
+        unique=True
+    )
 
     class Meta:
-        ordering = ['order',]
-        verbose_name = "Тип фотографии"
-        verbose_name_plural = "Типы фотографий"
+        ordering = ['order']
+        verbose_name = "Image Type"
+        verbose_name_plural = "Image Types"
 
     def __str__(self) -> str:
         return self.name
-
