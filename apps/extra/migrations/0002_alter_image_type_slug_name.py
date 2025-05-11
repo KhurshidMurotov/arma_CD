@@ -11,15 +11,16 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AlterField(
-            model_name="image_type",
+            model_name="ImageType",
             name="slug_name",
             field=models.CharField(
                 choices=[
-                    ("main_image", "main_image"),
-                    ("poster_image", "poster_image"),
+                    ("main_image", "Main Image"),
+                    ("poster_image", "Poster Image"),
                 ],
                 max_length=255,
-                verbose_name="Уникальное название",
+                verbose_name="Slug Name",
+                unique=True
             ),
         ),
     ]
