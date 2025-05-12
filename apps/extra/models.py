@@ -5,6 +5,7 @@ class Engine_type(models.Model):
     status_types = (
         ('active', 'active'),
         ('deactive', 'deactive'),
+
     )
 
     name = models.CharField("Name", max_length=255)
@@ -20,11 +21,12 @@ class Engine_type(models.Model):
         return self.name
 
 
-class Drive_unit(models.Model):
-
-    status_types = (
-        ('active', 'active'),
-        ('deactive', 'deactive'),
+class DriveUnit(models.Model):
+    STATUS_ACTIVE = 'active'
+    STATUS_INACTIVE = 'inactive'
+    STATUS_CHOICES = (
+        (STATUS_ACTIVE, 'Active'),
+        (STATUS_INACTIVE, 'Inactive'),
     )
 
     order = models.IntegerField("Order", default=0)
@@ -40,16 +42,18 @@ class Drive_unit(models.Model):
 
 
 class Equipment(models.Model):
-
-    status_types = (
-        ('active', 'active'),
-        ('deactive', 'deactive'),
+    STATUS_ACTIVE = 'active'
+    STATUS_INACTIVE = 'inactive'
+    STATUS_CHOICES = (
+        (STATUS_ACTIVE, 'Active'),
+        (STATUS_INACTIVE, 'Inactive'),
     )
 
 
     order = models.IntegerField("Order", default=0)
     name = models.CharField("Name", max_length=255)
     status = models.CharField("Status", max_length=255, choices=status_types)
+
 
     class Meta:
         ordering = ['order']
@@ -60,19 +64,20 @@ class Equipment(models.Model):
         return self.name
 
 
-class Image_type(models.Model):
-
-    status_types = (
-        ('active', 'active'),
-        ('deactive', 'deactive'),
+class ImageType(models.Model):
+    STATUS_ACTIVE = 'active'
+    STATUS_INACTIVE = 'inactive'
+    STATUS_CHOICES = (
+        (STATUS_ACTIVE, 'Active'),
+        (STATUS_INACTIVE, 'Inactive'),
     )
 
-    slug_names = (
-        ('main_image', 'main_image'),
-        ('poster_image', 'poster_image'),
-        ('inner_image', 'inner_image'),
-        ('sensor_image', 'sensor_image'),
-        ('skillet_image', 'skillet_image'),
+    IMAGE_TYPES = (
+        ('main_image', 'Main Image'),
+        ('poster_image', 'Poster Image'),
+        ('inner_image', 'Inner Image'),
+        ('sensor_image', 'Sensor Image'),
+        ('skillet_image', 'Skillet Image'),
     )
 
     order = models.IntegerField("Order", default=0)

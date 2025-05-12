@@ -27,6 +27,7 @@ class Migration(migrations.Migration):
                 (
                     "logo",
                     models.ImageField(upload_to="img/brands", verbose_name="Logo"),
+
                 ),
                 (
                     "status",

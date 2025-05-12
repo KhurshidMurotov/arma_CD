@@ -1,13 +1,23 @@
 from django.db import models
 from colorfield.fields import ColorField
-from apps.extra.models import Image_type
+from apps.extra.models import ImageType
+from django.utils.translation import gettext_lazy as _
 
 
 class Brand(models.Model):
+    class Status(models.TextChoices):
+        ACTIVE = 'active', _('Active')
+        INACTIVE = 'inactive', _('Inactive')
 
-    status_types = (
-        ('active', 'active'),
-        ('deactive', 'deactive'),
+    order = models.IntegerField(_("Order"), default=0)
+    name = models.CharField(_("Name"), max_length=255)
+    logo = models.ImageField(_("Logo"), upload_to='brands/logos/')
+    zoom = models.FloatField(_("Zoom Level"), default=1.0)
+    status = models.CharField(
+        _("Status"), 
+        max_length=255, 
+        choices=Status.choices,
+        default=Status.ACTIVE
     )
 
 
@@ -25,9 +35,10 @@ class Brand(models.Model):
         verbose_name = "Brand"
         verbose_name_plural = "Brands"
 
+
     @property
     def first_4_cars(self):
-        return Car.objects.filter(brand=self)[:4]
+        return self.car_set.filter(status=Brand.Status.ACTIVE)[:4]
 
     @property
     def zoom_type(self):
@@ -37,20 +48,31 @@ class Brand(models.Model):
             return 'zoom-out'
         return ''
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.name
 
 
 class Car(models.Model):
+    class Status(models.TextChoices):
+        ACTIVE = 'active', _('Active')
+        INACTIVE = 'inactive', _('Inactive')
 
-    status_types = (
-        ('active', 'active'),
-        ('deactive', 'deactive'),
+    class SpeedUnit(models.TextChoices):
+        MINUTES = 'minutes', _('Minutes')
+        HOURS = 'hours', _('Hours')
+
+    order = models.IntegerField(_("Order"), default=0)
+    brand = models.ForeignKey(
+        Brand, 
+        on_delete=models.RESTRICT, 
+        verbose_name=_("Brand")
     )
-
-    speed_in_types = (
-        ('minutes', 'minutes'),
-        ('hours', 'hours'),
+    name = models.CharField(_("Name"), max_length=255)
+    manufacture_year = models.IntegerField(_("Manufacture Year"), default=2023)
+    price = models.DecimalField(
+        _("Price"), 
+        max_digits=10, 
+        decimal_places=2
     )
 
     order = models.IntegerField("Order", default=0)
@@ -84,29 +106,36 @@ class Car(models.Model):
         verbose_name = "Car"
         verbose_name_plural = "Cars"
 
+
     @property
     def formatted_price(self):
-        return '{:7,.1f}'.format(self.price)
+        return f"${self.price:,.2f}"
+
+    def _get_images_by_type(self, slug_name):
+        try:
+            image_type = ImageType.objects.get(slug_name=slug_name)
+            return self.carimage_set.filter(
+                status=CarImage.Status.ACTIVE,
+                image_types=image_type
+            )
+        except ImageType.DoesNotExist:
+            return CarImage.objects.none()
 
     @property
     def images(self):
-        images = Car_image.objects.filter(car=self).filter(status='active')
-        return images
-    
+        return self.carimage_set.filter(status=CarImage.Status.ACTIVE)
+
     @property
     def main_images(self):
-        main_image_type = Image_type.objects.get(slug_name='main_image')
-        return self.images.filter(image_types__in=[main_image_type,])
-    
+        return self._get_images_by_type('main_image')
+
     @property
     def poster_images(self):
-        poster_image_type = Image_type.objects.get(slug_name='poster_image')
-        return self.images.filter(image_types__in=[poster_image_type,])
+        return self._get_images_by_type('poster_image')
 
     @property
     def inner_images(self):
-        inner_image_type = Image_type.objects.get(slug_name='inner_image')
-        return self.images.filter(image_types__in=[inner_image_type,])
+        return self._get_images_by_type('inner_image')
 
     @property
     def two_inner_images(self):
@@ -114,13 +143,11 @@ class Car(models.Model):
 
     @property
     def sensor_images(self):
-        sensor_image_type = Image_type.objects.get(slug_name='sensor_image')
-        return self.images.filter(image_types__in=[sensor_image_type,])
+        return self._get_images_by_type('sensor_image')
 
     @property
     def skillet_images(self):
-        skillet_image_type = Image_type.objects.get(slug_name='skillet_image')
-        return self.images.filter(image_types__in=[skillet_image_type,])
+        return self._get_images_by_type('skillet_image')
 
     @property
     def first_image(self):
@@ -142,15 +169,28 @@ class Car(models.Model):
     def skillet_image(self):
         return self.skillet_images.first()
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.name
 
 
-class Car_color(models.Model):
+class CarColor(models.Model):
+    class Status(models.TextChoices):
+        ACTIVE = 'active', _('Active')
+        INACTIVE = 'inactive', _('Inactive')
 
-    status_types = (
-        ('active', 'active'),
-        ('deactive', 'deactive'),
+    car = models.ForeignKey(
+        Car, 
+        on_delete=models.RESTRICT, 
+        verbose_name=_("Car")
+    )
+    order = models.IntegerField(_("Order"), default=0)
+    primary_color = ColorField(_("Primary Color"))
+    secondary_color = ColorField(_("Secondary Color"), blank=True, null=True)
+    status = models.CharField(
+        _("Status"), 
+        max_length=255, 
+        choices=Status.choices,
+        default=Status.ACTIVE
     )
 
     car = models.ForeignKey(Car, on_delete=models.RESTRICT, verbose_name="Car")
@@ -164,16 +204,35 @@ class Car_color(models.Model):
         verbose_name = "Car Color"
         verbose_name_plural = "Car Colors"
 
-    def __str__(self) -> str:
+
+    def __str__(self):
         return f"{self.order} | {self.car}"
 
 
 
 class Car_image(models.Model):
 
-    status_types = (
-        ('active', 'active'),
-        ('deactive', 'deactive'),
+
+    car = models.ForeignKey(
+        Car, 
+        on_delete=models.RESTRICT, 
+        verbose_name=_("Car")
+    )
+    image_types = models.ManyToManyField(
+        "extra.ImageType", 
+        blank=True, 
+        verbose_name=_("Image Types")
+    )
+    order = models.IntegerField(_("Order"), default=0)
+    image = models.ImageField(
+        _("Image"), 
+        upload_to='cars/images/%Y/%m/%d/'
+    )
+    status = models.CharField(
+        _("Status"), 
+        max_length=255, 
+        choices=Status.choices,
+        default=Status.ACTIVE
     )
 
     car = models.ForeignKey(Car, on_delete=models.RESTRICT, verbose_name="Car")
@@ -187,15 +246,10 @@ class Car_image(models.Model):
         verbose_name = "Car Image"
         verbose_name_plural = "Car Images"
 
+
     @property
     def image_types_list(self):
-        list_str = ''
-        for i, item in enumerate(self.image_types.all()):
-            list_str += f"{item.name}"
-            if self.image_types.count() - i != 1:
-                list_str += ", "
-        return list_str
+        return ", ".join([it.name for it in self.image_types.all()])
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.order} | {self.car}"
-

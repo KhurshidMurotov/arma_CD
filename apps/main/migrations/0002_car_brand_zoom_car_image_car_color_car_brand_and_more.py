@@ -41,6 +41,7 @@ class Migration(migrations.Migration):
                 ("width", models.IntegerField(verbose_name="Width (mm)")),
                 ("height", models.IntegerField(verbose_name="Height (mm)")),
                 ("num_of_places", models.IntegerField(verbose_name="Seating Capacity")),
+
                 ("max_speed", models.IntegerField(verbose_name="Max Speed (km/h)")),
                 (
                     "battery_capacity",
@@ -48,15 +49,16 @@ class Migration(migrations.Migration):
                 ),
                 ("charging_speed", models.FloatField(verbose_name="Charging Speed")),
                 (
-                    "speed_in",
+                    "speed_unit",
                     models.CharField(
-                        choices=[("minutes", "minutes"), ("hours", "hours")],
+                        choices=[("minutes", "Minutes"), ("hours", "Hours")],
                         max_length=255,
                         verbose_name="Charging Time Unit",
                     ),
                 ),
                 ("desc_1", models.TextField(max_length=150, verbose_name="Description 1")),
                 ("desc_2", models.TextField(max_length=150, verbose_name="Description 2")),
+
                 (
                     "is_featured",
                     models.BooleanField(default=False, verbose_name="Featured"),
@@ -64,12 +66,13 @@ class Migration(migrations.Migration):
                 (
                     "status",
                     models.CharField(
-                        choices=[("active", "active"), ("deactive", "deactive")],
+                        choices=[("active", "Active"), ("inactive", "Inactive")],
                         max_length=255,
                         verbose_name="Status",
                     ),
                 ),
                 ("date", models.DateTimeField(auto_now_add=True, verbose_name="date")),
+
             ],
             options={
                 "verbose_name": "Car",
@@ -84,6 +87,7 @@ class Migration(migrations.Migration):
         ),
         migrations.CreateModel(
             name="Car Image",
+
             fields=[
                 (
                     "id",
@@ -98,11 +102,12 @@ class Migration(migrations.Migration):
                 (
                     "image",
                     models.ImageField(upload_to="img/cars", verbose_name="Image"),
+
                 ),
                 (
                     "status",
                     models.CharField(
-                        choices=[("active", "active"), ("deactive", "deactive")],
+                        choices=[("active", "Active"), ("inactive", "Inactive")],
                         max_length=255,
                         verbose_name="Status",
                     ),
@@ -120,6 +125,7 @@ class Migration(migrations.Migration):
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.RESTRICT,
                         to="extra.image_type",
+
                         verbose_name="Image Type",
                     ),
                 ),
@@ -131,7 +137,7 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
-            name="Car_color",
+            name="CarColor",
             fields=[
                 (
                     "id",
@@ -148,7 +154,7 @@ class Migration(migrations.Migration):
                 (
                     "status",
                     models.CharField(
-                        choices=[("active", "active"), ("deactive", "deactive")],
+                        choices=[("active", "Active"), ("inactive", "Inactive")],
                         max_length=255,
                         verbose_name="Status",
                     ),
@@ -183,6 +189,7 @@ class Migration(migrations.Migration):
             field=models.ForeignKey(
                 on_delete=django.db.models.deletion.RESTRICT,
                 to="extra.drive_unit",
+
                 verbose_name="Drive Unit",
             ),
         ),
@@ -192,6 +199,7 @@ class Migration(migrations.Migration):
             field=models.ForeignKey(
                 on_delete=django.db.models.deletion.RESTRICT,
                 to="extra.engine_type",
+
                 verbose_name="Engine Type",
             ),
         ),

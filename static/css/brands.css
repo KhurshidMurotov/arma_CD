@@ -1,0 +1,279 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.wrapper {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.brands-section {
+  padding: 40px 80px 20px 80px;
+}
+
+.brands-section__header {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr;
+      grid-template-columns: auto 1fr;
+}
+
+.brands-section__header-btn {
+  padding: 0px 5px 0px 10px;
+}
+
+.brands-section__header-title {
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.brands-section__dropdown-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 40px 0px;
+  border-bottom: 1px solid #c8c8c8;
+  padding-bottom: 20px;
+}
+
+.brands-section__dropdown {
+  cursor: pointer;
+}
+
+.brands-section__dropdown-result {
+  border: 1px solid #c8c8c8;
+  border-bottom: 0px solid #c8c8c8;
+}
+
+.brands-section__brands-grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 20px;
+  border-bottom: 1px solid #c8c8c8;
+}
+
+.brand__item {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 16.6%;
+          flex: 0 0 16.6%;
+  display: none;
+}
+
+.brand__item.active {
+  display: block;
+}
+
+.brand__item.show {
+  display: block;
+  cursor: pointer;
+}
+
+.brand__item img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.brand__item.zoom-in {
+  zoom: 0.7;
+}
+
+.brand__item.zoom-out {
+  zoom: 1.2;
+}
+
+.brand-section__cars-grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+}
+
+.brand-section__cars-grid .car__item:nth-child(odd) {
+  border-right: 1px solid #c8c8c8;
+}
+
+.car__item {
+  padding: 20px;
+  border-bottom: 1px solid #c8c8c8;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  display: none;
+}
+
+.car__item.active {
+  display: block;
+}
+
+.car__item-title {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.car__item-subtitle {
+  font-size: 18px;
+}
+
+.car__item-main {
+  width: 100%;
+  aspect-ratio: 20/13;
+}
+
+.car__item-main img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.car__item-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  font-size: 16px;
+}
+
+.car__item-detail {
+  color: #999;
+}
+
+.car__item-btn {
+  color: #000;
+}
+
+.car__item-btn a {
+  color: #000;
+}
+
+@media (max-width: 900px) {
+  .brands-section {
+    padding: 40px 0 20px 0;
+  }
+  .brand-section__cars-grid {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (max-width: 750px) {
+  .brand__item {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 25%;
+            flex: 0 0 25%;
+  }
+}

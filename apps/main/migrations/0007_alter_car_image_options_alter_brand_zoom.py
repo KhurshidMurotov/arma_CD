@@ -7,11 +7,13 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('main', '0006_alter_car_power_reserver_to'),  
+
     ]
 
     operations = [
         migrations.AlterModelOptions(
             name='Car Image', 
+
             options={
                 'ordering': ['car', 'order'],
                 'verbose_name': 'Car Photo',
