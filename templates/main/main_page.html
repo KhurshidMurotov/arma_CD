@@ -1,14 +1,14 @@
 {% load static %}
 {% load i18n %}
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="{% static 'css/popup.css' %}">
     <link rel="stylesheet" href="{% static 'css/fill-btn.css' %}">
@@ -34,23 +34,23 @@
                             <img src="{{company.logo.url}}" alt="" class="logo-img">
                         </div>
                         <a href="#foot" class="header__link smooth-scroll">
-                            О нас
+                            About Us
                         </a>
                         <a href="#foot" class="header__link smooth-scroll">
-                            Контакты
+                            Contacts
                         </a>
                     </div>
                     <div class="main">
                         <div class="main__title">
-                            Электрокары <br> мировых брендов
+                            Electric cars <br> of world brands
                         </div>
                         <div class="main__subtitle">
-                            У нас вы можете приобрести авто любой комплектации<br>
-                            с комфортным салоном и по выгодным ценам
+                            You can buy a car of any configuration here<br>
+                            With comfort and at favorable prices
                         </div>
                         <a href="{% url 'brands' %}" class="main__btn fill-btn">
                             <span class="fill-btn__text">
-                                Выбрать модель
+                                Choose a model
                                 &nbsp;
                                 <i class="fa-solid fa-angle-right"></i>
                             </span>
@@ -68,7 +68,7 @@
                         <div class="banner-content dark-bg">
                             <div class="flex-container p-30-20">
                                 <div class="video-title">
-                                    Видео с новой доставкой авто
+                                    Video with a new car delivery
                                 </div>
                                 <span class="video-btn play-video">
                                     <i class="fa fa-play"></i>
@@ -84,17 +84,17 @@
                     <div class="flex-container p-30-20">
                         <div class="content-top">
                             <div class="banner-title">
-                                У нас вы можете
-                                приобрести любые
-                                запчасти
+                                You can buy any
+                                spare parts
+                                from us
                             </div>
                             <div class="banner-subtitle">
-                                Кузовные, окна на авто
-                                и аксессуары
+                                Body, car window and
+                                accessories
                             </div>
                         </div>
                         <a href="" class="content-bottom">
-                            Посмотреть все
+                            View all
                             &nbsp;
                             <i class="fa-solid fa-angle-right"></i>
                         </a>
@@ -117,19 +117,19 @@
             <div class="mobile-banner-section__burger-btn"></div>
             <div class="mobile-banner-section__sidebar">
                 <a href="{% url 'brands' %}" class="mobile-banner-section__sidebar-link">
-                    Каталог моделей
+                    Catalog of models
                 </a>
                 <a href="" class="mobile-banner-section__sidebar-link">
-                    Топ рейтинг авто
+                    Top car rating
                 </a>
                 <a href="" class="mobile-banner-section__sidebar-link">
-                    Купить запчасти
+                    Buy spare parts
                 </a>
                 <a href="" class="mobile-banner-section__sidebar-link">
-                    О компании
+                    About Company
                 </a>
                 <a href="" class="mobile-banner-section__sidebar-link">
-                    Контакты
+                    Contacts
                 </a>
             </div>
             <div class="mobile-banner-section__header">
@@ -141,15 +141,15 @@
             </div>
             <div class="mobile-banner-section__content">
                 <div class="mobile-banner-section__title">
-                    Электрокары <br> мировых брендов
+                    Electric cars <br> of world brands
                 </div>
                 <div class="mobile-banner-section__subtitle">
-                    У нас вы можете приобрести авто<br> любой комплектации<br>
-                    с комфортным салоном<br> и по выгодным ценам
+                    You can buy a car from us<br> any configuration<br>
+                    with a comfortable interior<br> and at competitive prices
                 </div>
                 <a href="{% url 'brands' %}" class="mobile-banner-section__btn fill-btn">
                     <span class="fill-btn__text">
-                        Выбрать модель
+                        Choose a model
                         &nbsp;
                         <i class="fa-solid fa-angle-right"></i>
                     </span>
@@ -162,23 +162,23 @@
         <!-- Start Slider section -->
         <section class="full-height slider-section remove-on-mobile">
             <div class="slider-section__header">
-                Новые модели
+                New models
             </div>
             <div class="slider-section__content">
                 {% for item in cars %}
                 <div id="slide-{{item.id}}" class="content__data {% if forloop.first %}active{% endif %}">
                     <div class="data__details">
                         <div class="data__subtitle">
-                            Модель
+                            Model
                         </div>
                         <div class="data__title">
                             {{item.name}}
                         </div>
                         <div class="data__mini">
-                            Год выпуска {{item.manufacture_year}}
+                            Year of issue {{item.manufacture_year}}
                         </div>
                         <div class="data__mini">
-                            цена {{item.formatted_price}} $
+                            price {{item.formatted_price}} $
                         </div>
                     </div>
                     <div class="data__btns">
@@ -192,7 +192,7 @@
                     <div class="data__table">
                         <div class="table__tr">
                             <div class="table__th">
-                                Тип двигателя
+                                Engine type
                             </div>
                             <div class="table__td">
                                 <span class="icon-circle">
@@ -204,18 +204,18 @@
                         </div>
                         <div class="table__tr">
                             <div class="table__th">
-                                Разгон до 100 км/ч
+                                Acceleration to 100 km/h
                             </div>
                             <div class="table__td">
-                                {{item.acceleration}} сек
+                                {{item.acceleration}} sec
                             </div>
                         </div>
                         <div class="table__tr">
                             <div class="table__th ml">
-                                Запас хода
+                                Power reserve
                             </div>
                             <div class="table__td ml">
-                                {{item.power_reserver_from}} км - {{item.power_reserver_to}} км
+                                {{item.power_reserver_from}} km - {{item.power_reserver_to}} km
                             </div>
                         </div>
                     </div>
@@ -232,7 +232,7 @@
                                 </div>
                                 <div class="media__text">
                                     <a href="{% url 'car-profile' item.id %}">
-                                        Посмотреть авто
+                                        View car
                                         &nbsp;
                                         <i class="fa-solid fa-angle-right" style="transform: translate(0, 1px);"></i>
                                     </a>
@@ -250,7 +250,7 @@
         <!-- Start Mobile Slider section -->
         <section class="mobile-slider-section remove-on-pk">
             <div class="mobile-slider-section__header">
-                Новые модели
+                New models
             </div>
             <div class="mobile-slider-section__content">
                 <div class="image-slider swiper-container">
@@ -261,16 +261,16 @@
                             <div class="mobile-slider-section__box">
                                 <div class="mobile-slider-section__details">
                                     <div class="mobile-slider-section__subtitle">
-                                        Модель
+                                        Model
                                     </div>
                                     <div class="mobile-slider-section__title">
                                         {{item.name}}
                                     </div>
                                     <div class="mobile-slider-section__mini">
-                                        Год выпуска {{item.manufacture_year}}
+                                        Year of issue {{item.manufacture_year}}
                                     </div>
                                     <div class="mobile-slider-section__mini">
-                                        цена {{item.formatted_price}} $
+                                        price {{item.formatted_price}} $
                                     </div>
                                 </div>
                                 <div class="mobile-slider-section__image">
@@ -279,7 +279,7 @@
                                 <div class="mobile-slider-section__table">
                                     <div class="mobile-slider-section__tr">
                                         <div class="mobile-slider-section__th">
-                                            Тип двигателя
+                                            Engine type
                                         </div>
                                         <div class="mobile-slider-section__td">
                                             <span class="icon-circle">
@@ -291,18 +291,18 @@
                                     </div>
                                     <div class="mobile-slider-section__tr">
                                         <div class="mobile-slider-section__th">
-                                            Разгон до 100 км / ч
+                                            Acceleration to 100 km/h
                                         </div>
                                         <div class="mobile-slider-section__td">
-                                            {{item.acceleration}} сек
+                                            {{item.acceleration}} sec
                                         </div>
                                     </div>
                                     <div class="mobile-slider-section__tr">
                                         <div class="mobile-slider-section__th">
-                                            Запас хода
+                                            Power reserve
                                         </div>
                                         <div class="mobile-slider-section__td">
-                                            {{item.power_reserver_from}} км - {{item.power_reserver_to}} км
+                                            {{item.power_reserver_from}} km - {{item.power_reserver_to}} km
                                         </div>
                                     </div>
                                 </div>
@@ -327,7 +327,7 @@
         <!-- Start Logo section -->
         <section class="logo-section">
             <div class="logo-section__header">
-                Популярные брэнды авто
+                Popular car brands
             </div>
             <div class="logo-section__content">
                 <div class="content__logos">
@@ -339,7 +339,7 @@
                 </div>
                 <div class="content__link">
                     <a href="{% url 'brands' %}">
-                        Посмотреть каталог
+                        View catalog
                         &nbsp;
                         <i class="fa-solid fa-angle-right"></i>
                     </a>
@@ -351,7 +351,7 @@
         <!-- Start Advert section -->
         <section class="advert-section">
             <div class="advert-section__header">
-                Топ лучших электрокаров
+                Top best electric cars
             </div>
             <div class="advert-section__banners">
                 {% for item in featured_cars %}
@@ -365,12 +365,12 @@
                                 {{item.name}}
                             </div>
                             <div class="banner__subtitle">
-                                <span>Запас хода</span> {{item.power_reserver_from}} км - {{item.power_reserver_to}} км &nbsp;|&nbsp; <span>Тип двигателя</span> {{item.engine_type}}
+                                <span>Power reserve</span> {{item.power_reserver_from}} km - {{item.power_reserver_to}} km &nbsp;|&nbsp; <span>Engine type</span> {{item.engine_type}}
                             </div>
                         </div>
                         <div class="banner__link">
                             <a href="{% url 'car-profile' item.id %}">
-                                Посмотреть модель
+                                View model
                                 &nbsp;
                                 <i class="fa-solid fa-angle-right"></i>
                             </a>
@@ -395,16 +395,16 @@
             <div class="delivery-section__content">
                 <div class="delivery-section__data">
                     <div class="delivery-data__title">
-                        Доставка авто <br> в любую точку Узбекистана
+                        Car delivery <br> to any point in Uzbekistan
                     </div>
                     <div class="delivery-data__subtitle">
-                        Мы можем доставить ваш электрокар <br> в любой из городов Узбекистана
+                        We can deliver your electric car <br> in any city of Uzbekistan
                     </div>
                     <div class="delivery-section__media inner remove-on-pk">
                         <img src="{% static 'img/car pic.png' %}" alt="">
                     </div>
                     <a href="{% url 'brands' %}" class="delivery-data__btn">
-                        Выбрать модель
+                        Choose a model
                         &nbsp;
                         <i class="fa-solid fa-angle-right"></i>
                     </a>
@@ -419,7 +419,7 @@
         <!-- Start Review section -->
         <section class="review-section">
             <div class="review-section__header">
-                Оставить заявку
+                Leave a request
             </div>
             <div class="review-section__content">
                 <form method="post" id="review_form" class="review-section__form">
@@ -433,7 +433,7 @@
                     </div>
                     <div class="review-section__input-group double">
                         <select id="review_model_id" name="model_id" class="review-section__select">
-                            <option value="">Какая модель вас интересует</option>
+                            <option value="">Which model are you interested in?</option>
                             {% for item in cars %}
                             <option value="{{item.id}}">{{item.name}}</option>
                             {% endfor %}
@@ -443,7 +443,7 @@
                     <div class="review-section__submit">
                         <div class="review-section__btn fill-btn dark submit-review-form">
                             <span class="fill-btn__text">
-                                Отправить
+                                Send
                                 <i class="fa-solid fa-chevron-right" style="transform: translate(0, 1px);"></i>
                             </span>
                             <div class="fill-btn__area"></div>
@@ -458,22 +458,22 @@
         <section class="footer-section">
             <div class="footer-section__links">
                 <div class="footer-section__link-row" id = "foot">
-                    <div class="footer-section__link-th">Наш адрес</div>
+                    <div class="footer-section__link-th">Our address</div>
                     <div class="footer-section__link-td">{{company.address}}</div>
                 </div>
                 <hr style="border: 1px solid #999;">
                 <div class="footer-section__link-row">
-                    <div class="footer-section__link-th">Режим работы</div>
+                    <div class="footer-section__link-th">Work time</div>
                     <div class="footer-section__link-td">{{company.working_time}}</div>
                 </div>
                 <hr style="border: 1px solid #999;">
                 <div class="footer-section__link-row">
-                    <div class="footer-section__link-th">Контакты</div>
+                    <div class="footer-section__link-th">Contacts</div>
                     <div class="footer-section__link-td">{{company.phone_number}}</div>
                 </div>
             </div>
             <div class="footer-section__media">
-                <a href="{{company.instagram}}" class="footer-section__media-block main">
+                <a href="https://www.instagram.com/arma_carsuz/" class="footer-section__media-block main">
                     <div class="footer-section__bg">
                         <img src="{% static 'img/insta square.svg' %}" alt="">
                     </div>
@@ -481,7 +481,7 @@
                         <img src="{% static 'img/instagram-2.png' %}" alt="">
                     </div>
                 </a>
-                <a href="{{company.facebook}}" class="footer-section__media-block">
+                <a href="https://www.facebook.com/profile.php?id=61576282466365" class="footer-section__media-block">
                     <div class="footer-section__bg">
                         <img src="{% static 'img/Facebook square.svg' %}" alt="">
                     </div>
@@ -489,7 +489,7 @@
                         <img src="{% static 'img/facebook.png' %}" alt="">
                     </div>
                 </a>
-                <a href="{{company.telegram}}" class="footer-section__media-block">
+                <a href="https://t.me/ARMA_cars" class="footer-section__media-block">
                     <div class="footer-section__bg">
                         <img src="{% static 'img/Telegram  square.svg' %}" alt="">
                     </div>
