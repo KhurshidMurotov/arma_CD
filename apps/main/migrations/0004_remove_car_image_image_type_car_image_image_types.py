@@ -12,11 +12,11 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RemoveField(
-            model_name="car_image",
+            model_name="Car Image",
             name="image_type",
         ),
         migrations.AddField(
-            model_name="car_image",
+            model_name="Car Image",
             name="image_types",
             field=models.ManyToManyField(
                 blank=True, to="extra.image_type", verbose_name="Image Types"

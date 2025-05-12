@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AlterModelOptions(
-            name="car_image",
+            name="Car Image",
             options={
                 "ordering": ["order"],
                 "verbose_name": "Car Image",

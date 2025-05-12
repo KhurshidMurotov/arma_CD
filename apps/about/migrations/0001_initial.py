@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ("name", models.CharField(max_length=255, verbose_name="Name")),
-                ("logo", models.ImageField(upload_to="about/logo/", verbose_name="Logo")),
+                ("logo", models.ImageField(upload_to="img/about/", verbose_name="Logo")),
                 ("address", models.CharField(max_length=255, verbose_name="Address")),
                 (
                     "working_time",
@@ -40,7 +40,7 @@ class Migration(migrations.Migration):
                     models.FileField(
                         blank=True,
                         null=True,
-                        upload_to="about/videos/",
+                        upload_to="video/last_video/",
                         verbose_name="Latest Video",
                     ),
                 ),

@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
                 ("name", models.CharField(max_length=255, verbose_name="Name")),
                 (
                     "logo",
-                    models.ImageField(upload_to="brands/logo/", verbose_name="Logo"),
+                    models.ImageField(upload_to="img/brands", verbose_name="Logo"),
                 ),
                 (
                     "status",

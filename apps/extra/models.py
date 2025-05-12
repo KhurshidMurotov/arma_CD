@@ -1,16 +1,15 @@
 from django.db import models
 
-class EngineType(models.Model):
-    STATUS_ACTIVE = 'active'
-    STATUS_INACTIVE = 'inactive'
-    STATUS_CHOICES = (
-        (STATUS_ACTIVE, 'Active'),
-        (STATUS_INACTIVE, 'Inactive'),
+class Engine_type(models.Model):
+
+    status_types = (
+        ('active', 'active'),
+        ('deactive', 'deactive'),
     )
 
     name = models.CharField("Name", max_length=255)
     slug_name = models.CharField("Slug Name", max_length=255, unique=True)
-    image = models.ImageField("Image", upload_to='engine_types/')
+    image = models.ImageField("Image", upload_to='img/engine_type')
 
     class Meta:
         ordering = ['id']
@@ -21,12 +20,11 @@ class EngineType(models.Model):
         return self.name
 
 
-class DriveUnit(models.Model):
-    STATUS_ACTIVE = 'active'
-    STATUS_INACTIVE = 'inactive'
-    STATUS_CHOICES = (
-        (STATUS_ACTIVE, 'Active'),
-        (STATUS_INACTIVE, 'Inactive'),
+class Drive_unit(models.Model):
+
+    status_types = (
+        ('active', 'active'),
+        ('deactive', 'deactive'),
     )
 
     order = models.IntegerField("Order", default=0)
@@ -42,16 +40,16 @@ class DriveUnit(models.Model):
 
 
 class Equipment(models.Model):
-    STATUS_ACTIVE = 'active'
-    STATUS_INACTIVE = 'inactive'
-    STATUS_CHOICES = (
-        (STATUS_ACTIVE, 'Active'),
-        (STATUS_INACTIVE, 'Inactive'),
+
+    status_types = (
+        ('active', 'active'),
+        ('deactive', 'deactive'),
     )
+
 
     order = models.IntegerField("Order", default=0)
     name = models.CharField("Name", max_length=255)
-    status = models.CharField("Status", max_length=255, choices=STATUS_CHOICES)
+    status = models.CharField("Status", max_length=255, choices=status_types)
 
     class Meta:
         ordering = ['order']
@@ -62,20 +60,19 @@ class Equipment(models.Model):
         return self.name
 
 
-class ImageType(models.Model):
-    STATUS_ACTIVE = 'active'
-    STATUS_INACTIVE = 'inactive'
-    STATUS_CHOICES = (
-        (STATUS_ACTIVE, 'Active'),
-        (STATUS_INACTIVE, 'Inactive'),
+class Image_type(models.Model):
+
+    status_types = (
+        ('active', 'active'),
+        ('deactive', 'deactive'),
     )
 
-    IMAGE_TYPES = (
-        ('main_image', 'Main Image'),
-        ('poster_image', 'Poster Image'),
-        ('inner_image', 'Inner Image'),
-        ('sensor_image', 'Sensor Image'),
-        ('skillet_image', 'Skillet Image'),
+    slug_names = (
+        ('main_image', 'main_image'),
+        ('poster_image', 'poster_image'),
+        ('inner_image', 'inner_image'),
+        ('sensor_image', 'sensor_image'),
+        ('skillet_image', 'skillet_image'),
     )
 
     order = models.IntegerField("Order", default=0)
@@ -83,7 +80,7 @@ class ImageType(models.Model):
     slug_name = models.CharField(
         "Slug Name", 
         max_length=255, 
-        choices=IMAGE_TYPES, 
+        choices=slug_names, 
         unique=True
     )
 

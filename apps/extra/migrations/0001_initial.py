@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name="DriveUnit",
+            name="Drive_unit",
             fields=[
                 (
                     "id",
@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
-            name="EngineType",
+            name="Engine_type",
             fields=[
                 (
                     "id",
@@ -53,7 +53,7 @@ class Migration(migrations.Migration):
                 (
                     "image",
                     models.ImageField(
-                        upload_to="engine_types/", verbose_name="Image"
+                        upload_to="img/engine_type", verbose_name="Image"
                     ),
                 ),
             ],
@@ -93,7 +93,7 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
-            name="ImageType",
+            name="image_type",
             fields=[
                 (
                     "id",

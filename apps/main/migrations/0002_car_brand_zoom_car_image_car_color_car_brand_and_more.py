@@ -33,14 +33,14 @@ class Migration(migrations.Migration):
                 ("price", models.FloatField(verbose_name="Price")),
                 ("acceleration", models.FloatField(verbose_name="Acceleration 0-100 km/h")),
                 (
-                    "power_reserve_from",
+                    "power_reserver_from",
                     models.IntegerField(verbose_name="Power Reserve From"),
                 ),
-                ("power_reserve_to", models.IntegerField(verbose_name="To")),
+                ("power_reserver_to", models.IntegerField(verbose_name="To")),
                 ("length", models.IntegerField(verbose_name="Length (mm)")),
                 ("width", models.IntegerField(verbose_name="Width (mm)")),
                 ("height", models.IntegerField(verbose_name="Height (mm)")),
-                ("seating_capacity", models.IntegerField(verbose_name="Seating Capacity")),
+                ("num_of_places", models.IntegerField(verbose_name="Seating Capacity")),
                 ("max_speed", models.IntegerField(verbose_name="Max Speed (km/h)")),
                 (
                     "battery_capacity",
@@ -48,15 +48,15 @@ class Migration(migrations.Migration):
                 ),
                 ("charging_speed", models.FloatField(verbose_name="Charging Speed")),
                 (
-                    "speed_unit",
+                    "speed_in",
                     models.CharField(
-                        choices=[("minutes", "Minutes"), ("hours", "Hours")],
+                        choices=[("minutes", "minutes"), ("hours", "hours")],
                         max_length=255,
                         verbose_name="Charging Time Unit",
                     ),
                 ),
-                ("description_1", models.TextField(max_length=150, verbose_name="Description 1")),
-                ("description_2", models.TextField(max_length=150, verbose_name="Description 2")),
+                ("desc_1", models.TextField(max_length=150, verbose_name="Description 1")),
+                ("desc_2", models.TextField(max_length=150, verbose_name="Description 2")),
                 (
                     "is_featured",
                     models.BooleanField(default=False, verbose_name="Featured"),
@@ -64,12 +64,12 @@ class Migration(migrations.Migration):
                 (
                     "status",
                     models.CharField(
-                        choices=[("active", "Active"), ("inactive", "Inactive")],
+                        choices=[("active", "active"), ("deactive", "deactive")],
                         max_length=255,
                         verbose_name="Status",
                     ),
                 ),
-                ("created_at", models.DateTimeField(auto_now_add=True, verbose_name="Created At")),
+                ("date", models.DateTimeField(auto_now_add=True, verbose_name="date")),
             ],
             options={
                 "verbose_name": "Car",
@@ -83,7 +83,7 @@ class Migration(migrations.Migration):
             field=models.IntegerField(default=1, verbose_name="Zoom Level"),
         ),
         migrations.CreateModel(
-            name="CarImage",
+            name="Car Image",
             fields=[
                 (
                     "id",
@@ -97,12 +97,12 @@ class Migration(migrations.Migration):
                 ("order", models.IntegerField(default=0, verbose_name="Order")),
                 (
                     "image",
-                    models.ImageField(upload_to="cars/images/", verbose_name="Image"),
+                    models.ImageField(upload_to="img/cars", verbose_name="Image"),
                 ),
                 (
                     "status",
                     models.CharField(
-                        choices=[("active", "Active"), ("inactive", "Inactive")],
+                        choices=[("active", "active"), ("deactive", "deactive")],
                         max_length=255,
                         verbose_name="Status",
                     ),
@@ -119,7 +119,7 @@ class Migration(migrations.Migration):
                     "image_type",
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.RESTRICT,
-                        to="extra.imagetype",
+                        to="extra.image_type",
                         verbose_name="Image Type",
                     ),
                 ),
@@ -131,7 +131,7 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
-            name="CarColor",
+            name="Car_color",
             fields=[
                 (
                     "id",
@@ -148,7 +148,7 @@ class Migration(migrations.Migration):
                 (
                     "status",
                     models.CharField(
-                        choices=[("active", "Active"), ("inactive", "Inactive")],
+                        choices=[("active", "active"), ("deactive", "deactive")],
                         max_length=255,
                         verbose_name="Status",
                     ),
@@ -182,7 +182,7 @@ class Migration(migrations.Migration):
             name="drive_unit",
             field=models.ForeignKey(
                 on_delete=django.db.models.deletion.RESTRICT,
-                to="extra.driveunit",
+                to="extra.drive_unit",
                 verbose_name="Drive Unit",
             ),
         ),
@@ -191,7 +191,7 @@ class Migration(migrations.Migration):
             name="engine_type",
             field=models.ForeignKey(
                 on_delete=django.db.models.deletion.RESTRICT,
-                to="extra.enginetype",
+                to="extra.engine_type",
                 verbose_name="Engine Type",
             ),
         ),
