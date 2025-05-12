@@ -5,7 +5,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -25,36 +24,37 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("name", models.CharField(max_length=255, verbose_name="Название")),
-                ("logo", models.ImageField(upload_to="img/about", verbose_name="Лого")),
-                ("address", models.CharField(max_length=255, verbose_name="Адрес")),
+                ("name", models.CharField(max_length=255, verbose_name="Name")),
+
+                ("logo", models.ImageField(upload_to="img/about/", verbose_name="Logo")),
+
+                ("address", models.CharField(max_length=255, verbose_name="Address")),
                 (
                     "working_time",
-                    models.CharField(max_length=255, verbose_name="Время работы"),
+                    models.CharField(max_length=255, verbose_name="Working Hours"),
                 ),
                 (
                     "phone_number",
-                    models.CharField(max_length=255, verbose_name="Телефонный номер"),
+                    models.CharField(max_length=20, verbose_name="Phone Number"),
                 ),
                 (
                     "last_video",
                     models.FileField(
                         blank=True,
                         null=True,
-                        upload_to="video/last_video",
-                        verbose_name="Последнее видео",
+
+                        upload_to="video/last_video/",
+
+                        verbose_name="Latest Video",
                     ),
                 ),
-                ("facebook", models.URLField(max_length=1024, verbose_name="Фейсбук")),
-                (
-                    "instagram",
-                    models.URLField(max_length=1024, verbose_name="Инстаграм"),
-                ),
-                ("telegram", models.URLField(max_length=1024, verbose_name="Телеграм")),
+                ("facebook", models.URLField(blank=True, verbose_name="Facebook")),
+                ("instagram", models.URLField(blank=True, verbose_name="Instagram")),
+                ("telegram", models.URLField(blank=True, verbose_name="Telegram")),
             ],
             options={
-                "verbose_name": "О компании",
-                "verbose_name_plural": "О компании",
+                "verbose_name": "About Company",
+                "verbose_name_plural": "About Company",
                 "ordering": ["id"],
             },
         ),
@@ -70,25 +70,25 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("name", models.CharField(max_length=255, verbose_name="Имя")),
+                ("name", models.CharField(max_length=255, verbose_name="Name")),
                 (
                     "phone_number",
-                    models.CharField(max_length=255, verbose_name="Телефонный номер"),
+                    models.CharField(max_length=20, verbose_name="Phone Number"),
                 ),
-                ("time", models.TimeField(verbose_name="Время")),
+                ("time", models.TimeField(auto_now_add=True, verbose_name="Time")),
                 (
                     "car",
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.RESTRICT,
                         to="main.car",
-                        verbose_name="Машина",
+                        verbose_name="Car",
                     ),
                 ),
             ],
             options={
-                "verbose_name": "Отзыв",
-                "verbose_name_plural": "Отзывы",
-                "ordering": ["id"],
+                "verbose_name": "Review",
+                "verbose_name_plural": "Reviews",
+                "ordering": ["-time"],
             },
         ),
     ]

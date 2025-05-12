@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name="Drive_unit",
+            name="DriveUnit",
             fields=[
                 (
                     "id",
@@ -22,17 +22,17 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("order", models.IntegerField(default=0, verbose_name="Очередь")),
-                ("name", models.CharField(max_length=255, verbose_name="Название")),
+                ("order", models.IntegerField(default=0, verbose_name="Order")),
+                ("name", models.CharField(max_length=255, verbose_name="Name")),
             ],
             options={
-                "verbose_name": "Привод",
-                "verbose_name_plural": "Приводы",
+                "verbose_name": "Drive Unit",
+                "verbose_name_plural": "Drive Units",
                 "ordering": ["order"],
             },
         ),
         migrations.CreateModel(
-            name="Engine_type",
+            name="EngineType",
             fields=[
                 (
                     "id",
@@ -43,23 +43,25 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("name", models.CharField(max_length=255, verbose_name="Название")),
+                ("name", models.CharField(max_length=255, verbose_name="Name")),
                 (
                     "slug_name",
                     models.CharField(
-                        max_length=255, verbose_name="Уникальное название"
+                        max_length=255, verbose_name="Unique Name"
                     ),
                 ),
                 (
                     "image",
                     models.ImageField(
-                        upload_to="img/engine_type", verbose_name="Фотография"
+
+                        upload_to="img/engine_type", verbose_name="Image"
+
                     ),
                 ),
             ],
             options={
-                "verbose_name": "Тип двигателя",
-                "verbose_name_plural": "Типы двигателей",
+                "verbose_name": "Engine Type",
+                "verbose_name_plural": "Engine Types",
                 "ordering": ["id"],
             },
         ),
@@ -75,25 +77,27 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("order", models.IntegerField(default=0, verbose_name="Очередь")),
-                ("name", models.CharField(max_length=255, verbose_name="Название")),
+                ("order", models.IntegerField(default=0, verbose_name="Order")),
+                ("name", models.CharField(max_length=255, verbose_name="Name")),
                 (
                     "status",
                     models.CharField(
-                        choices=[("active", "active"), ("deactive", "deactive")],
+                        choices=[("active", "Active"), ("inactive", "Inactive")],
                         max_length=255,
-                        verbose_name="Статус",
+                        verbose_name="Status",
                     ),
                 ),
             ],
             options={
-                "verbose_name": "Комплектация",
-                "verbose_name_plural": "Комплектации",
+                "verbose_name": "Equipment",
+                "verbose_name_plural": "Equipment Packages",
                 "ordering": ["order"],
             },
         ),
         migrations.CreateModel(
-            name="Image_type",
+
+            name="image_type",
+
             fields=[
                 (
                     "id",
@@ -104,18 +108,18 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("order", models.IntegerField(default=0, verbose_name="Очередь")),
-                ("name", models.CharField(max_length=255, verbose_name="Название")),
+                ("order", models.IntegerField(default=0, verbose_name="Order")),
+                ("name", models.CharField(max_length=255, verbose_name="Name")),
                 (
                     "slug_name",
                     models.CharField(
-                        max_length=255, verbose_name="Уникальное название"
+                        max_length=255, verbose_name="Unique Name"
                     ),
                 ),
             ],
             options={
-                "verbose_name": "Тип фотографии",
-                "verbose_name_plural": "Типы фотографий",
+                "verbose_name": "Image Type",
+                "verbose_name_plural": "Image Types",
                 "ordering": ["order"],
             },
         ),

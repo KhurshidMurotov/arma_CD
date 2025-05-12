@@ -27,7 +27,7 @@ class EquipmentAdmin(admin.ModelAdmin):
 
 
 @admin.register(Image_type)
-class Image_typeAdmin(admin.ModelAdmin):
+class image_typeAdmin(admin.ModelAdmin):
     list_display = ('order', 'name', 'slug_name')
     list_display_links = ('name',)
     list_editable = ('order',)
