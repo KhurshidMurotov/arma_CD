@@ -2,43 +2,58 @@ from django.db import models
 
 
 class About(models.Model):
-
-    status_types = (
-        ('active', 'active'),
-        ('deactive', 'deactive'),
+    STATUS_ACTIVE = 'active'
+    STATUS_DEACTIVE = 'deactive'
+    STATUS_CHOICES = (
+        (STATUS_ACTIVE, 'Active'),
+        (STATUS_DEACTIVE, 'Deactive'),
     )
 
-    name = models.CharField("Название", max_length=255)
-    logo = models.ImageField("Лого", upload_to='img/about')
-    address = models.CharField("Адрес", max_length=255)
-    working_time = models.CharField("Время работы", max_length=255)
-    phone_number = models.CharField("Телефонный номер", max_length=255)
-    last_video = models.FileField("Последнее видео", upload_to='video/last_video', null=True, blank=True)
-    facebook = models.URLField("Фейсбук", max_length=1024)
-    instagram = models.URLField("Инстаграм", max_length=1024)
-    telegram = models.URLField("Телеграм", max_length=1024)
+    name = models.CharField(max_length=255)
+    logo = models.ImageField(upload_to='about/logo/')
+    address = models.CharField(max_length=255)
+    working_time = models.CharField(max_length=255)
+    phone_number = models.CharField(max_length=20)
+    last_video = models.FileField(
+        upload_to='about/videos/',
+        null=True,
+        blank=True
+    )
+    facebook = models.URLField(blank=True)
+    instagram = models.URLField(blank=True)
+    telegram = models.URLField(blank=True)
+    status = models.CharField(
+        max_length=8,
+        choices=STATUS_CHOICES,
+        default=STATUS_ACTIVE
+    )
 
     class Meta:
-        ordering = ['id',]
-        verbose_name = "О компании"
-        verbose_name_plural = "О компании"
+        ordering = ['id']
+        verbose_name = "About Company"
+        verbose_name_plural = "About Companies"
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.name
 
 
 class Review(models.Model):
-
-    name = models.CharField("Имя", max_length=255)
-    phone_number = models.CharField("Телефонный номер", max_length=255)
-    car = models.ForeignKey("main.Car", on_delete=models.RESTRICT, verbose_name="Машина")
-    time = models.TimeField("Время")
+    name = models.CharField(max_length=255)
+    phone_number = models.CharField(max_length=20)
+    car = models.ForeignKey(
+        "main.Car",
+        on_delete=models.RESTRICT,
+        related_name='reviews'
+    )
+    time = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['id',]
-        verbose_name = "Отзыв"
-        verbose_name_plural = "Отзывы"
+        ordering = ['-time']
+        verbose_name = "Review"
+        verbose_name_plural = "Reviews"
+        indexes = [
+            models.Index(fields=['-time']),
+        ]
 
-    def __str__(self) -> str:
-        return self.name
-
+    def __str__(self):
+        return f"{self.name} - {self.car}"

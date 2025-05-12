@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="car",
             name="power_reserver_to",
-            field=models.IntegerField(verbose_name="Запас хода до"),
+            field=models.IntegerField(verbose_name="Max Power Reserve (km)"),
         ),
     ]

@@ -14,8 +14,8 @@ class Migration(migrations.Migration):
             name="car_image",
             options={
                 "ordering": ["order"],
-                "verbose_name": "Фотография машины",
-                "verbose_name_plural": "Фотографии машин",
+                "verbose_name": "Car Image",
+                "verbose_name_plural": "Car Images",
             },
         ),
     ]
